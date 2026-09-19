@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>团课学习</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f7f5f5;
+    color: #333;
+    min-height: 100vh;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wrap { width: 100%; max-width: 560px; }
+
+  .back {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #c8102e;
+    font-size: 14px;
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+  .back:hover { text-decoration: underline; }
+
+  .page-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #c8102e;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .input-row { display: flex; gap: 12px; }
+
+  input[type="text"] {
+    flex: 1;
+    padding: 16px 18px;
+    font-size: 17px;
+    border: 2px solid #f0d0d6;
+    border-radius: 12px;
+    outline: none;
+    color: #c8102e;
+    font-weight: 600;
+    transition: border-color .2s;
+    background: #fff;
+  }
+  input[type="text"]:focus { border-color: #c8102e; }
+  input[type="text"]::placeholder { color: #c8a0a8; font-weight: 400; }
+
+  .confirm-btn {
+    padding: 16px 32px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    background: #c8102e;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    letter-spacing: 2px;
+    transition: background .2s, transform .1s;
+  }
+  .confirm-btn:hover { background: #a00d24; }
+  .confirm-btn:active { transform: scale(.97); }
+
+  .footer {
+    text-align: center;
+    margin-top: 36px;
+    font-size: 12px;
+    color: #bbb;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a class="back" href="index.html">← 返回首页</a>
+
+  <h1 class="page-title">团 课 学 习</h1>
+
+  <div class="input-row">
+    <input type="text" id="box" placeholder="请输入词条..." autocomplete="off">
+    <button class="confirm-btn" id="btn">确 定</button>
+  </div>
+
+  <div class="footer">© 2026 团务学习平台 · 仅供学习交流</div>
+
+</div>
+
+<!-- ★★★ 这里引用内容文件，内容都在 tuanke-data.js 里 ★★★ -->
+<script src="tuanke-data.js"></script>
+
+<script>
+  const box = document.getElementById('box');
+  const btn = document.getElementById('btn');
+
+  // 打字机：同一个框，先清空，再一个字一个字打出来
+  let timer = null;
+  function typeInBox(text) {
+    if (timer) clearTimeout(timer);
+    box.value = '';
+    box.disabled = true;
+    let i = 0;
+    const speed = Math.max(60, Math.min(160, 2500 / text.length));
+    function type() {
+      if (i < text.length) {
+        box.value += text.charAt(i);
+        i++;
+        timer = setTimeout(type, speed);
+      } else {
+        box.disabled = false;
+      }
+    }
+    type();
+  }
+
+  // 随机抽答案
+  let lastIdx = -1;
+  function randomQuote() {
+    let idx;
+    do { idx = Math.floor(Math.random() * TUANKE_DATA.answers.length); }
+    while (TUANKE_DATA.answers.length > 1 && idx === lastIdx);
+    lastIdx = idx;
+    return TUANKE_DATA.answers[idx];
+  }
+
+  btn.addEventListener('click', () => {
+    const val = box.value.trim();
+
+    if (!val) {
+      box.value = '';
+      box.placeholder = '请先输入词条';
+      return;
+    }
+    if (!TUANKE_DATA.words.includes(val)) {
+      box.value = '';
+      box.placeholder = '词条无效';
+      return;
+    }
+    typeInBox(randomQuote());
+  });
+
+  box.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') btn.click();
+  });
+</script>
+</body>
+</html>
