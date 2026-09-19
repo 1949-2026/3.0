@@ -42,20 +42,24 @@
 
   .input-row { display: flex; gap: 12px; }
 
-  input[type="text"] {
-    flex: 1;
-    padding: 16px 18px;
-    font-size: 17px;
-    border: 2px solid #f0d0d6;
-    border-radius: 12px;
-    outline: none;
-    color: #c8102e;
-    font-weight: 600;
-    transition: border-color .2s;
-    background: #fff;
-  }
-  input[type="text"]:focus { border-color: #c8102e; }
-  input[type="text"]::placeholder { color: #c8a0a8; font-weight: 400; }
+textarea {
+  flex: 1;
+  padding: 16px 18px;
+  font-size: 17px;
+  border: 2px solid #f0d0d6;
+  border-radius: 12px;
+  outline: none;
+  color: #c8102e;
+  font-weight: 600;
+  transition: border-color .2s;
+  background: #fff;
+  resize: none;
+  line-height: 1.8;
+  min-height: 160px;
+  font-family: inherit;
+}
+textarea:focus { border-color: #c8102e; }
+textarea::placeholder { color: #c8a0a8; font-weight: 400; }
 
   .confirm-btn {
     padding: 16px 32px;
