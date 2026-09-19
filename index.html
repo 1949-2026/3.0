@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>团务学习平台</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f7f5f5;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  /* ========== 主容器，一屏居中 ========== */
+  .home-wrap {
+    width: 100%;
+    max-width: 560px;
+    text-align: center;
+  }
+
+  /* ========== 顶部标题 ========== */
+  .home-title {
+    font-size: 34px;
+    font-weight: 800;
+    color: #c8102e;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 8px rgba(200,16,46,.12);
+  }
+.title-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-bottom: 6px;
+}
+  .home-sub {
+    font-size: 14px;
+    color: #c8102e;
+    opacity: .7;
+    letter-spacing: 3px;
+    margin-bottom: 48px;
+  }
+
+  /* ========== 四个按钮 ========== */
+  .entry-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .entry {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    text-decoration: none;
+    background: #fff;
+    border: 2px solid #f0d0d6;
+    border-radius: 16px;
+    padding: 20px 24px;
+
+    color: #c8102e;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    box-shadow: 0 4px 14px rgba(200,16,46,.08);
+    transition: all .25s;
+  }
+  .entry:hover {
+    transform: translateY(-3px);
+    background: #c8102e;
+    color: #fff;
+    border-color: #c8102e;
+    box-shadow: 0 10px 24px rgba(200,16,46,.28);
+  }
+  .entry:hover .entry-icon { color: #fff; }
+
+  /* 图标区 */
+  .entry-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: #c8102e;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    transition: color .25s;
+  }
+
+  /* 团徽图片 */
+  .entry-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* ========== 底部 ========== */
+  .home-footer {
+    margin-top: 48px;
+    font-size: 12px;
+    color: #bbb;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div class="home-wrap">
+<h1 class="home-title">
+  <img src="tuanhui.png" class="title-logo" alt="团徽">
+  引领青年思想
+</h1>
+  <p class="home-sub">团 务 学 习 平 台</p>
+
+  <div class="entry-list">
+
+    <!-- ① 团的历史：前面放团徽图片 -->
+    <a class="entry" href="gongqingtuan.html">
+      <span class="entry-icon"><img src="tuanhui.png" alt="团徽"></span>
+      团的历史
+    </a>
+
+    <!-- ② 团课学习：前面放书本符号 -->
+    <a class="entry" href="tuanke.html">
+      <span class="entry-icon">📖</span>
+      团课学习
+    </a>
+
+    <!-- ③ 团歌：前面放音符符号 -->
+    <a class="entry" href="tuange.html">
+      <span class="entry-icon">♪</span>
+      团歌
+    </a>
+
+    <!-- ④ 待定：前面放圆环符号 -->
+    <a class="entry" href="daiding.html">
+      <span class="entry-icon">◯</span>
+      待定
+    </a>
+
+  </div>
+
+  <div class="home-footer">© 2026 团务学习平台 · 仅供学习交流</div>
+
+</div>
+
+</body>
+</html>
