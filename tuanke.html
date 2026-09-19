@@ -120,6 +120,7 @@ textarea::placeholder { color: #c8a0a8; font-weight: 400; }
     function type() {
       if (i < text.length) {
         box.value += text.charAt(i);
+       box.scrollTop = box.scrollHeight;
         i++;
         timer = setTimeout(type, speed);
       } else {
